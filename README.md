@@ -62,5 +62,8 @@ In my implementation:
 * The variables are the states and the actuators at each time point except the first time point. 
 * The equality constraints are the updates of the states.
 
+### Result
+![Simulation](./pics/res.png)
+
 ### References:
 1. Udacity Self-Driving Car Nanodegree
