@@ -4,6 +4,12 @@
 * Please see the [repository](https://github.com/udacity/CarND-MPC-Project) from Udacity.
 * Replace all the files in the folder `src`.
 
+### Result
+
+The video is uploaded on Youtube. [link](https://www.youtube.com/watch?v=0dQcXQcltiY&list=PLNDTbGbATLcED0iX8K-zY3vrNbwhxV8gC&index=5)
+
+![Simulation](./pics/res.png)
+
 ### Description of the Vehicle Model
 ##### Control Inputs:
 * `delta`  is the steering wheel angle. The bound is (-25, 25) degree.
@@ -62,8 +68,7 @@ In my implementation:
 * The variables are the states and the actuators at each time point except the first time point. 
 * The equality constraints are the updates of the states.
 
-### Result
-![Simulation](./pics/res.png)
+
 
 ### References:
 1. Udacity Self-Driving Car Nanodegree
