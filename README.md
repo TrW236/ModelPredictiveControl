@@ -8,7 +8,7 @@
 
 The video is uploaded on Youtube. [link](https://www.youtube.com/watch?v=0dQcXQcltiY&list=PLNDTbGbATLcED0iX8K-zY3vrNbwhxV8gC&index=5)
 
-![Simulation](./pics/res.png)
+![Simulation](https://filedn.com/lUE8ye7yWpzFOF1OFLVsPau/Github/mpc/res.png)
 
 ### Description of the Vehicle Model
 ##### Control Inputs:
