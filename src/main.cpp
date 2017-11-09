@@ -134,6 +134,10 @@ int main() {
             double epsi_lat = -atan(coeffs[1]);  //psi - atan(coeffs[1] + 2.0 * coeffs[2] * px + 3.0 * coeffs[3] * px * px)
             double cte_lat = polyeval(coeffs, 0.0);  //- 0.0 + v * CppAD::sin(epsi) * t_lat;
             // double epsi_lat = (psi - 0.0) - v * delta / Lf * t_lat;
+            cout <<endl << "=================cte"<<cte_lat<<endl; 
+            double ref_v;
+            if (abs(cte_lat) < 1) ref_v = 100;
+            else ref_v = 50;
 
           // first optimization result
           // double cte = polyeval(coeffs, 0.0);// polyeval(coeffs, px) - py;
@@ -143,7 +147,7 @@ int main() {
             state_lat << 0.0, 0.0, 0.0, v_lat, cte_lat, epsi_lat;
           // state << 0.0,0.0,0.0,v,cte,epsi;//px, py, psi, v, cte, epsi;
 
-          auto vars = mpc.Solve(state_lat, coeffs);
+          auto vars = mpc.Solve(state_lat, coeffs, ref_v);
 
           // double Lf = 2.67; //(deg2rad(25)*Lf)
           double steer_value = check_bound(vars[0], 1.0, -1.0)/deg2rad(25)/Lf;

@@ -8,7 +8,7 @@ using CppAD::AD;
 
 size_t N = 10;
 double dt = 0.1;
-double ref_v = 70;
+
 
 // This value assumes the model presented in the classroom is used.
 //
@@ -39,7 +39,8 @@ class FG_eval {
  public:
   // Fitted polynomial coefficients
   Eigen::VectorXd coeffs;
-  FG_eval(Eigen::VectorXd coeffs) { this->coeffs = coeffs; }
+  double ref_v;
+  FG_eval(Eigen::VectorXd coeffs, double ref_v) { this->coeffs = coeffs; this->ref_v = ref_v;}
   size_t t;
   typedef CPPAD_TESTVECTOR(AD<double>) ADvector;
   // `fg` is a vector containing the cost and constraints.
@@ -141,7 +142,7 @@ class FG_eval {
 MPC::MPC() {}
 MPC::~MPC() {}
 
-vector<double> MPC::Solve(Eigen::VectorXd state, Eigen::VectorXd coeffs) {
+vector<double> MPC::Solve(Eigen::VectorXd state, Eigen::VectorXd coeffs, double ref_v) {
   bool ok = true;
   size_t i;
   typedef CPPAD_TESTVECTOR(double) Dvector;
@@ -224,7 +225,7 @@ vector<double> MPC::Solve(Eigen::VectorXd state, Eigen::VectorXd coeffs) {
   constraints_upperbound[epsi_start] = epsi;
 
   // object that computes objective and constraints
-  FG_eval fg_eval(coeffs);
+  FG_eval fg_eval(coeffs, ref_v);
 
   //
   // NOTE: You don't have to worry about these options
