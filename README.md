@@ -6,9 +6,11 @@
 
 ### Result
 
-The video is uploaded on Youtube. [link](https://www.youtube.com/watch?v=0dQcXQcltiY&list=PLNDTbGbATLcED0iX8K-zY3vrNbwhxV8gC&index=5)
+The video is uploaded on Youtube. [link](https://www.youtube.com/watch?v=0dQcXQcltiY&list=PLNDTbGbATLcED0iX8K-zY3vrNbwhxV8gC&index=5) The `ref_v` is set fixed as 70 mph.
 
-![Simulation](https://filedn.com/lUE8ye7yWpzFOF1OFLVsPau/Github/mpc/res.png)
+Another video is also uploaded. [link](https://www.youtube.com/watch?v=fhhA5fGkHI0&index=6&list=PLNDTbGbATLcED0iX8K-zY3vrNbwhxV8gC) The `ref_v` is set as 100 mph, when `abs(cte)` is less than 1. `ref_v` is set as 50 mph, when `abs(cte)` is larger than 1. 
+
+<img src="https://filedn.com/lUE8ye7yWpzFOF1OFLVsPau/Github/mpc/res.png" alt="simulation" width="333">
 
 ### Description of the Vehicle Model
 ##### Control Inputs:
