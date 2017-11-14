@@ -12,6 +12,19 @@ Another video is also uploaded. [link](https://www.youtube.com/watch?v=fhhA5fGkH
 
 <img src="https://filedn.com/lUE8ye7yWpzFOF1OFLVsPau/Github/mpc/res.png" alt="simulation" width="333">
 
+### Vehicle Coordinates
+
+```
+            ^  y
+            |
+    --------|--------
+    |       |       |
+    |       O-------------> x           -----> velocity
+    |   vehicle     |
+    -----------------
+rear                front 
+```
+
 ### Description of the Vehicle Model
 ##### Control Inputs:
 * `delta`  is the steering wheel angle. The bound is (-25, 25) degree.
