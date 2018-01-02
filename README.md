@@ -6,9 +6,9 @@
 
 ### Result
 
-The video is uploaded on Youtube. [link](https://www.youtube.com/watch?v=0dQcXQcltiY&list=PLNDTbGbATLcED0iX8K-zY3vrNbwhxV8gC&index=5) The `ref_v` is set fixed as 70 mph.
+The video was uploaded on Youtube. [link](https://www.youtube.com/watch?v=0dQcXQcltiY&list=PLNDTbGbATLcED0iX8K-zY3vrNbwhxV8gC&index=5) The `ref_v` was set fixed as 70 mph.
 
-Another video is also uploaded. [link](https://www.youtube.com/watch?v=fhhA5fGkHI0&index=6&list=PLNDTbGbATLcED0iX8K-zY3vrNbwhxV8gC) The `ref_v` is set as 100 mph, when `abs(cte)` is less than 1. `ref_v` is set as 50 mph, when `abs(cte)` is larger than 1. 
+Another video was also uploaded. [link](https://www.youtube.com/watch?v=fhhA5fGkHI0&index=6&list=PLNDTbGbATLcED0iX8K-zY3vrNbwhxV8gC) The `ref_v` was set as 100 mph, when `abs(cte)` was less than 1. `ref_v` was set as 50 mph, when `abs(cte)` was larger than 1. 
 
 <img src="https://filedn.com/lUE8ye7yWpzFOF1OFLVsPau/Github/mpc/res.png" alt="simulation" width="333">
 
@@ -49,12 +49,12 @@ whereby `psi_des` is the desired `psi`. `f(x)` is the reference line. `Lf` is th
 ### Timestep Length and Elapsed Duration (N & dt) 
 * `T` is the duration, in which the predictive trajectory will be calculated. This value should be large enough, but, it is not allowed to be much large.
  
- When it is too large: firstly the trajectory will beyond the horizon, which will make no sense; secondly, high value can introduce error, 
+ When it is too large: firstly the trajectory would go beyond the horizon, which will make no sense; secondly, a high value can introduce error, 
  due to that the reference path is approximated through a polynomial. 
- Thus high value of `T` requires that the reference path should also be accurate sufficiently, which is not possible; 
- thirdly the computation will also be too much.
+ Thus a high value of `T` requires that the reference path should also be accurate sufficiently, which is not possible; 
+ thirdly the computation will even be too much.
  
- When it is too small, the evaluation of the trajectory is not sufficient, in order to have a precise optimization result.
+ When it is too small, the evaluation of the trajectory is not sufficient, to have a precise optimization result.
  
  It is recommended by Udacity that `T` is set to be a few seconds.
 * `N` the number of discretization. When `N` is too high, the computation will be too much. When `N` is too small, the predicted values will be not sufficiently accurate.
@@ -63,27 +63,27 @@ whereby `psi_des` is the desired `psi`. `f(x)` is the reference line. `Lf` is th
 
 ### MPC Preprocessing
 
-The coordinates values, which will be sent into the optimization solver, are preprocessed. The global coordinates of the waypoints will be changed into the view of the vehicle. This means the coordinates values is changed according to the position of the vehicle `(x, y, psi)`, so that `x = 0, y = 0, psi = 0`.
+The coordinates values, which would be sent to the optimization solver, were preprocessed. The global coordinates of the waypoints would be changed into the view of the vehicle, which means the coordinates values was changed according to the position of the vehicle `(x, y, psi)`, so that `x = 0, y = 0, psi = 0`.
 
-This preprocessing will simplify numerical calculation, such as the calculation of `cte`, `epsi` and the optimization process.
+This preprocessing would simplify the numerical calculation, such as the calculation of `cte`, `epsi` and the optimization process.
 
 ### Model Predictive Control with Latency
 In a real car, an actuation command won't execute instantly - there will be a delay as the command propagates through the system. A realistic delay might be on the order of 100 milliseconds.
 This is a problem called "latency".
 
-MPC can deal with latency more easily, because this type of delay can be  as dynamics incorporated into the model. For instance, instead of considering the true current state the MPC will calculate the state after the delay (this is like "prediction") and use this state as the "current" state.
+MPC can deal with latency easier, because this type of delay can be incorporated as dynamics into the model. For instance, instead of considering the actual current state the MPC will calculate the state after the delay (this is like "prediction") and use this state as the "current" state.
 
 In my implementation:
-1. The state `x, y, psi, v` after `100 ms` will be calculated.
-2. The coordinates of waypoints will be changed accordint to this new state (the state after 100 ms).
-3. Other variables will be calculated, such as `cte, epsi` and `coeffs`, so that the state after `100 ms` will be the first state to be considered. 
+1. The state `x, y, psi, v` after `100 ms` would be calculated.
+2. The coordinates of waypoints would be changed according to this new state (the state after 100 ms).
+3. Other variables would be calculated, such as `cte, epsi` and `coeffs`, so that the state after `100 ms` would be the first state to be considered. 
+
 ### Optimization Process
 
-* The cost function will be defined according to the needs. For instance, the errors are not allowed to be much high, the changing of the steering angle is not allowed to be much large etc.
-* The variables are the states and the actuators at each time point except the first time point. 
-* The equality constraints are the updates of the states.
-
-
+* The cost function would be defined according to the needs. For instance, the errors were not allowed to be much high, the changing rate of the steering angle was not allowed to be much large, etc.
+* The variables were the states and the actuators at each time point except the first time point. 
+* The equality constraints were the updates of the states.
 
 ### References:
+
 1. Udacity Self-Driving Car Nanodegree
